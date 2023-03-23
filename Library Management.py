@@ -597,6 +597,11 @@ def addstudents():
     
     if student is None:
         qq='INSERT INTO Login VALUE("%s","%i","%i","%s","%i")' 
+        try:
+            pas = int(e3.get())
+        except ValueError:
+            messagebox.showerror("Student", "Password Must be in Numbers")
+            return None
         cur.execute(qq%(e1.get(),int(e2.get()),int(e3.get()),e4.get(),int(e5.get())))
         con.commit()
         win.destroy()
